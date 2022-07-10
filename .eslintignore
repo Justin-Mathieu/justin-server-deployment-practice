@@ -1,0 +1,8 @@
+**/node_modules/*
+**/*.min.js
+**/vendor/*
+**/coverage/*
+**/build/*
+**/docs/*
+Footer
+© 2022 GitHub, Inc.
