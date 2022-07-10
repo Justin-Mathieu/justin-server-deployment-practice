@@ -23,3 +23,9 @@ Lab 1
    1. `npm test`
    1. Copy `.github/` and show actions
    1. Push to new repo
+
+## URLs
+
+[Heroku](https://justins-server-deploy-prod.herokuapp.com/)
+[GitHub Actions](https://github.com/Justin-Mathieu/justin-server-deployment-practice/actions)
+[Pull Request](https://github.com/Justin-Mathieu/justin-server-deployment-practice/pulls)
