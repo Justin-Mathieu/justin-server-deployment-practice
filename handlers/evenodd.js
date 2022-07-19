@@ -1,4 +1,4 @@
-module.exports = (req, res) => {
+function evenOdd(req, res) {
   let outputObject = {
     10: 'even',
     5: 'odd',
@@ -6,4 +6,6 @@ module.exports = (req, res) => {
   };
 
   res.status(200).json(outputObject);
-};
+}
+
+module.exports = { evenOdd };

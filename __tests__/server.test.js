@@ -1,8 +1,7 @@
 'use strict';
-
+const { db } = require('../db.js');
 const supertest = require('supertest');
 const server = require('../server.js');
-
 const request = supertest(server.app);
 
 describe('API Server', () => {
@@ -33,5 +32,48 @@ describe('API Server', () => {
     const response = await request.get('/data');
     expect(response.status).toEqual(200);
     expect(response.body.time).toBeDefined();
+  });
+});
+
+// phase 2 tests
+
+describe('CRUD tests', async () => {
+  beforeEach(() => {
+    db.sync();
+  });
+
+  it('creates data', async () => {
+    let response = await request.post('/car').send({
+      make: 'toyota',
+      model: 'camry',
+      color: 'blue',
+    });
+    expect(response.status).toBe(200);
+    expect(response.body).toMatch({
+      make: 'toyota',
+      model: 'camry',
+      color: 'blue',
+    });
+    it('gets a car', async () => {
+      let req = await (await request.get('/car')).send({
+        make: 'toyota',
+        model: 'camry',
+        color: 'blue',
+      });
+      expect(req).toBe(200);
+      const id = req.body.id;
+      let res = await request.get(`/car/${id}`);
+      expect(res.status).toBe(200);
+      expect(res).toMatch({
+        id: id,
+        make: 'toyota',
+        model: 'camry',
+        color: 'blue',
+      });
+      it('gets a list of cars', async () => {
+
+      });
+    });
+
   });
 });
