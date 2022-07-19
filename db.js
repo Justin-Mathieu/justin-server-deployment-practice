@@ -17,7 +17,7 @@ switch (process.env.NODE_ENV) {
     break;
 }
 
-const db = new Sequelize('sqlite::memory:', {
+const db = new Sequelize(connection_string, {
   dialectOptions: {
     ssl: {
       require: true,
