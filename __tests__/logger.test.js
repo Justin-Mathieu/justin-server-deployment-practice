@@ -1,4 +1,4 @@
-const logger = require('../middleware/logger.js');
+const { logger } = require('../middleware/logger.js');
 
 describe('logger middleware test', () => {
   it('logs in the console', () => {
@@ -6,16 +6,16 @@ describe('logger middleware test', () => {
     const req = { method: 'GET', URL: '/' };
     const res = {};
     const next = () => { };
-    logger(req, res, next);
+    jest.fn(req, res, next);
 
 
     expect(console.log).toHaveBeenCalledWith('GET', '/');
 
+    expect(console.log).toHaveBeenCalledWith('GET', '/data');
 
+    expect(console.log).toHaveBeenCalledWith('GET', '/person');
 
   });
 
 });
 
-// expect(console.log).toHaveBeenCalledWith('GET', '/data');
-//     expect(console.log).toHaveBeenCalledWith('GET', '/person')

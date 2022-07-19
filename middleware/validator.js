@@ -8,4 +8,4 @@ function validator(req, res, next) {
   else { res.status(500).send('Not Found'); }
 }
 
-module.exports = validator; 
+module.exports = { validator }; 

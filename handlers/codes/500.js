@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (error, req, res, next) => {
+function errorHandler(error, req, res, next) {
   res.status(500).send({
     error: 500,
     route: req.path,
@@ -8,4 +8,5 @@ module.exports = (error, req, res, next) => {
     body: req.body,
     message: `SERVER ERROR: ${error.message}`,
   });
-};
+}
+module.exports = { errorHandler };
