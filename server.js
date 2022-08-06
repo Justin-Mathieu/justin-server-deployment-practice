@@ -12,6 +12,8 @@ const { evenOdd } = require('./handlers/evenodd.js');
 require('./db.js');
 const { db } = require('./db');
 const { listCars, getCar, createCar, deleteCar, updateCar } = require('./handlers/carHandlers.js');
+const Collection = require('./models/collection-class');
+const { Pet, Car } = require('./models/models.js');
 
 
 const app = express();
@@ -23,20 +25,27 @@ app.get('/', hello);
 app.get('/data', evenOdd);
 app.get('/person/:name', validator);
 
-// Pet routes 
-app.get('/pet/:id', getPet);
-app.get('/pet', listPets);
-app.post('/pet', createPet);
-app.delete('/pet/:id', deletePet);
-app.put('/pet/:id', updatePet);
+// // Pet routes 
+// app.get('/pet/:id', getPet);
+// app.get('/pet', listPets);
+// app.post('/pet', createPet);
+// app.delete('/pet/:id', deletePet);
+// app.put('/pet/:id', updatePet);
 
 
-// Car routes
-app.get('/car/:id', getCar);
-app.get('/car', listCars);
-app.post('/car', createCar);
-app.delete('/car/:id', deleteCar);
-app.put('/car/:id', updateCar);
+// // Car routes
+// app.get('/car/:id', getCar);
+// app.get('/car', listCars);
+// app.post('/car', createCar);
+// app.delete('/car/:id', deleteCar);
+// app.put('/car/:id', updateCar);
+
+//Lab 04 
+
+const petCollection = new Collection(Pet);
+const carColection = new Collection(Car);
+
+
 
 // Error Handling
 app.use('*', notFoundHandler);
