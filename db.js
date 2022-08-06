@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
-const { pet } = require('./models/petModel');
-const { car } = require('./models/carModel');
+const { Pet } = require('./models/models');
+const { Car } = require('./models/models');
 
 let connection_string;
 
@@ -31,7 +31,7 @@ const db = new Sequelize(connection_string, {
 
 module.exports = {
   db,
-  Pet: pet(db),
-  Car: car(db),
+  Pet: Pet(db),
+  Car: Car(db),
 
 };
